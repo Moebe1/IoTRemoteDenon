@@ -28,9 +28,9 @@ import time
 from rotary_irq_esp import RotaryIRQ
 gc.collect()
 
-ssid = 'OPTUSVD388E5E8'
-password = 'PROWSMACON17146'
-mqtt_server = '192.168.0.12'
+ssid = 'Your_SSID'
+password = 'Your_Password'
+mqtt_server = 'You_MQTT_Server'
 #EXAMPLE IP ADDRESS
 
 #mqtt_server = '192.168.1.144'
