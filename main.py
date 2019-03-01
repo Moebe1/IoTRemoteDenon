@@ -1,3 +1,10 @@
+# Credit:
+# Based on code found at: https://randomnerdtutorials.com/micropython-mqtt-esp32-esp8266/ MicroPython – Getting Started with MQTT on ESP32/ESP8266
+# https://randomnerdtutorials.com/terms/
+# Licensed Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode
+# Micropython Lib https://github.com/micropython/micropython.git
+
+
 # import machine
 # i2c = machine.I2C(scl=machine.Pin(5), sda=machine.Pin(4))
 #
@@ -12,7 +19,7 @@
 # for device in devices:
 #     print("Decimal address: ",device," | Hexa address: ",hex(device))
 
-import machine, ssd1306
+
 i2c = machine.I2C(scl=machine.Pin(5), sda=machine.Pin(4))
 oled = ssd1306.SSD1306_I2C(128, 60, i2c, 0x3c)
 oled.fill(0)
@@ -21,8 +28,8 @@ oled.show()
 
 def sub_cb(topic, msg):
     print((topic, msg))
-    if topic == b'notification' and msg == b'received':
-        print('ESP received hello message')
+    if topic == b'notification':
+        print(msg)
 
 
 def wait_pin_change(button):
@@ -85,10 +92,10 @@ while True:
         oled.fill(0)
         oled.text(disP,0,0)
         oled.show()
-        gc.collect()
+        
     while pVal == 0:
         msg = b'%d' % val
         client.publish(topic_pub, msg)
         time.sleep_ms(200)
         pVal = 1
-
+	gc.collect()
