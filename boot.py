@@ -20,8 +20,8 @@ import ssd1306
 
 machine.freq(160000000)
 
-ssid = 'OPTUSVD388E5E8'
-password = 'PROWSMACON17146'
+ssid = 'Your_SSID'
+password = 'Your_Password'
 mqtt_server = '192.168.0.12'
 
 client_id = ubinascii.hexlify(machine.unique_id())
